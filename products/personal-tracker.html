@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Personal Spend Tracker - Track daily expenses, set budgets by category, and review spending monthly and yearly. Simple personal finance for everyone.">
+    <title>Personal Spend Tracker | TechLake</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="../" class="logo">
+                <img src="../images/logo.png" alt="TechLake.co">
+            </a>
+            <ul class="nav-links">
+                <li><a href="../index.html#products">Products</a></li>
+                <li><a href="../index.html#how-it-works">How It Works</a></li>
+                <li><a href="../index.html#pricing">Pricing</a></li>
+                <li><a href="../index.html#faq">FAQ</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Product Hero -->
+    <header class="product-hero personal-hero">
+        <div class="container">
+            <div class="product-hero-content">
+                <div class="breadcrumb">
+                    <a href="../index.html">Home</a> / <span>Personal Spend Tracker</span>
+                </div>
+                <h1>Personal Spend Tracker</h1>
+                <p class="product-hero-subtitle">
+                    Track your daily expenses, set budgets by category, see where your money goes,
+                    and finally reach your savings goals — all in one simple spreadsheet.
+                </p>
+                <div class="product-hero-price">
+                    <span class="price">£19</span>
+                    <span class="price-note">One-time purchase • Instant download</span>
+                </div>
+                <div class="product-hero-buttons">
+                    <!-- Replace href with your LemonSqueezy/Gumroad checkout link -->
+                    <a href="#" class="btn btn-primary btn-large">Buy Now - £19</a>
+                    <a href="#features" class="btn btn-secondary">See What's Included</a>
+                </div>
+                <div class="product-hero-trust">
+                    <span>Works with Google Sheets & Microsoft Excel</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Problem/Solution Section -->
+    <section class="product-problem">
+        <div class="container">
+            <div class="problem-solution-grid">
+                <div class="problem-box">
+                    <h3>The Problem</h3>
+                    <ul>
+                        <li>"I have no idea where my money goes each month"</li>
+                        <li>"I try to budget but can never stick to it"</li>
+                        <li>"Budgeting apps want monthly subscriptions"</li>
+                        <li>"I want to save more but don't know where to cut"</li>
+                    </ul>
+                </div>
+                <div class="solution-box">
+                    <h3>The Solution</h3>
+                    <ul>
+                        <li>See exactly where every pound goes</li>
+                        <li>Set realistic budgets and track against them</li>
+                        <li>Pay once, use forever — no subscriptions</li>
+                        <li>Identify spending patterns and save more</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="product-features-section">
+        <div class="container">
+            <h2>What's Included</h2>
+            <p class="section-subtitle">Everything you need to master your personal finances</p>
+
+            <div class="features-detail-grid">
+                <div class="feature-detail">
+                    <div class="feature-detail-icon personal-icon">1</div>
+                    <h3>Daily Expense Logging</h3>
+                    <p>Quick and simple expense entry. Add the date, description, category, amount, and payment method. Takes 30 seconds per purchase. Build the habit of tracking everything.</p>
+                </div>
+
+                <div class="feature-detail">
+                    <div class="feature-detail-icon personal-icon">2</div>
+                    <h3>13 Spending Categories</h3>
+                    <p>Pre-built categories that cover all personal spending: Food & Groceries, Dining Out, Transport, Bills, Entertainment, Shopping, Health, Subscriptions, and more.</p>
+                </div>
+
+                <div class="feature-detail">
+                    <div class="feature-detail-icon personal-icon">3</div>
+                    <h3>Monthly Budget Setting</h3>
+                    <p>Set a spending limit for each category. The tracker shows you how much you've spent vs your budget — in real time. No more end-of-month surprises.</p>
+                </div>
+
+                <div class="feature-detail">
+                    <div class="feature-detail-icon personal-icon">4</div>
+                    <h3>Savings Goal Tracking</h3>
+                    <p>Set a savings percentage (e.g., 20% of income). The tracker calculates your target and shows whether you're on track to hit it each month.</p>
+                </div>
+
+                <div class="feature-detail">
+                    <div class="feature-detail-icon personal-icon">5</div>
+                    <h3>Visual Dashboard</h3>
+                    <p>Pie charts showing spending by category. Bar charts comparing months. See trends at a glance and understand your spending patterns.</p>
+                </div>
+
+                <div class="feature-detail">
+                    <div class="feature-detail-icon personal-icon">6</div>
+                    <h3>Yearly Overview</h3>
+                    <p>12-month view of all spending by category. See seasonal patterns, track annual totals, and review your financial year at a glance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories-section">
+        <div class="container">
+            <h2>Spending Categories</h2>
+            <p class="section-subtitle">13 categories covering all personal expenses</p>
+
+            <div class="categories-grid">
+                <div class="category-item">Food & Groceries</div>
+                <div class="category-item">Dining Out</div>
+                <div class="category-item">Transport</div>
+                <div class="category-item">Bills & Utilities</div>
+                <div class="category-item">Entertainment</div>
+                <div class="category-item">Shopping</div>
+                <div class="category-item">Health & Fitness</div>
+                <div class="category-item">Personal Care</div>
+                <div class="category-item">Subscriptions</div>
+                <div class="category-item">Education</div>
+                <div class="category-item">Gifts</div>
+                <div class="category-item">Travel</div>
+                <div class="category-item">Other</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What You Get Section -->
+    <section class="what-you-get">
+        <div class="container">
+            <h2>What You Get</h2>
+            <div class="deliverables-grid">
+                <div class="deliverable">
+                    <div class="deliverable-icon">📊</div>
+                    <h3>Google Sheets Template</h3>
+                    <p>Ready-to-use Google Sheets file with all tabs, formulas, charts, and formatting pre-built.</p>
+                </div>
+                <div class="deliverable">
+                    <div class="deliverable-icon">📁</div>
+                    <h3>Excel Version</h3>
+                    <p>Same template in .xlsx format for Microsoft Excel users.</p>
+                </div>
+                <div class="deliverable">
+                    <div class="deliverable-icon">📖</div>
+                    <h3>Quick Start Guide</h3>
+                    <p>Step-by-step PDF guide with tips for successful expense tracking.</p>
+                </div>
+                <div class="deliverable">
+                    <div class="deliverable-icon">📧</div>
+                    <h3>Email Support</h3>
+                    <p>Stuck? Email us and get a response within 24 hours.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tabs Preview -->
+    <section class="tabs-preview">
+        <div class="container">
+            <h2>Inside the Tracker</h2>
+            <p class="section-subtitle">6 interconnected tabs for complete financial visibility</p>
+
+            <div class="tabs-grid">
+                <div class="tab-card personal-tab">
+                    <h3>Welcome</h3>
+                    <p>Quick start guide and tips</p>
+                </div>
+                <div class="tab-card personal-tab">
+                    <h3>Settings</h3>
+                    <p>Income, savings goal, category budgets</p>
+                </div>
+                <div class="tab-card personal-tab">
+                    <h3>Daily Log</h3>
+                    <p>Add expenses here — main input tab</p>
+                </div>
+                <div class="tab-card personal-tab">
+                    <h3>Monthly</h3>
+                    <p>This month's summary & budget status</p>
+                </div>
+                <div class="tab-card personal-tab">
+                    <h3>Dashboard</h3>
+                    <p>Charts, trends, and insights</p>
+                </div>
+                <div class="tab-card personal-tab">
+                    <h3>Yearly</h3>
+                    <p>12-month overview and annual totals</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ideal For Section -->
+    <section class="ideal-for">
+        <div class="container">
+            <h2>Ideal For</h2>
+            <div class="ideal-grid">
+                <div class="ideal-item">
+                    <h3>Budget Beginners</h3>
+                    <p>Never tracked expenses before? Start here.</p>
+                </div>
+                <div class="ideal-item">
+                    <h3>Savers</h3>
+                    <p>Want to save more? See where to cut.</p>
+                </div>
+                <div class="ideal-item">
+                    <h3>Couples</h3>
+                    <p>Track shared household expenses together.</p>
+                </div>
+                <div class="ideal-item">
+                    <h3>Anyone Fed Up with Apps</h3>
+                    <p>No subscriptions, no syncing, no privacy concerns.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works-detail">
+        <div class="container">
+            <h2>How to Use It</h2>
+            <div class="how-steps">
+                <div class="how-step">
+                    <div class="step-num">1</div>
+                    <div class="step-content">
+                        <h3>Set Up Once (5 mins)</h3>
+                        <p>Enter your monthly income, savings goal percentage, and budget for each category in the Settings tab.</p>
+                    </div>
+                </div>
+                <div class="how-step">
+                    <div class="step-num">2</div>
+                    <div class="step-content">
+                        <h3>Log Daily (30 secs per expense)</h3>
+                        <p>Add each purchase to the Daily Log. Date, description, category, amount. That's it.</p>
+                    </div>
+                </div>
+                <div class="how-step">
+                    <div class="step-num">3</div>
+                    <div class="step-content">
+                        <h3>Review Weekly</h3>
+                        <p>Check the Monthly tab to see if you're on track. Adjust spending if needed.</p>
+                    </div>
+                </div>
+                <div class="how-step">
+                    <div class="step-num">4</div>
+                    <div class="step-content">
+                        <h3>Analyse Monthly</h3>
+                        <p>Review the Dashboard for patterns. See which categories eat your budget.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing CTA -->
+    <section class="product-cta personal-cta">
+        <div class="container">
+            <div class="cta-box">
+                <h2>Get the Personal Spend Tracker</h2>
+                <div class="cta-price">
+                    <span class="price">£19</span>
+                    <span class="price-note">One-time purchase • Instant download • 14-day refund guarantee</span>
+                </div>
+                <ul class="cta-includes">
+                    <li>Google Sheets + Excel versions</li>
+                    <li>Daily expense logging</li>
+                    <li>13 spending categories</li>
+                    <li>Monthly budget tracking</li>
+                    <li>Savings goal tracking</li>
+                    <li>Visual dashboard with charts</li>
+                    <li>Yearly overview</li>
+                    <li>Quick start guide</li>
+                    <li>Email support</li>
+                    <li>Lifetime access</li>
+                </ul>
+                <!-- Replace href with your LemonSqueezy/Gumroad checkout link -->
+                <a href="#" class="btn btn-primary btn-large">Buy Now - £19</a>
+                <p class="cta-guarantee">Not satisfied? Get a full refund within 14 days. No questions asked.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="product-faq">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+
+            <div class="faq-list">
+                <div class="faq-item">
+                    <h3>How is this different from budgeting apps?</h3>
+                    <p>No monthly subscription. No bank account syncing (more privacy). No app to download. Just a simple spreadsheet you own forever. You enter expenses manually, which actually helps you be more mindful of spending.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Do I have to enter every single expense?</h3>
+                    <p>For best results, yes. But even tracking 80% of expenses gives you valuable insights. Start with the big categories (food, bills, transport) and add more detail over time.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Can I use this for a couple or family?</h3>
+                    <p>Yes! You can either share one spreadsheet and both add expenses, or each person can have their own tracker. For shared expenses, just agree who logs what.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>What if my categories are different?</h3>
+                    <p>The 13 categories cover most personal expenses, but you have full access to the spreadsheet. You can rename categories, add new ones, or merge them to fit your life.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>How long does it take each day?</h3>
+                    <p>About 30 seconds per expense. Most people spend 2-5 minutes per day logging all their purchases. Many find it easiest to do it once at the end of each day.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Will this actually help me save money?</h3>
+                    <p>Awareness is the first step. When you see exactly where your money goes, you naturally start making better choices. Most users report finding "leaks" they didn't know existed.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="../" class="logo">
+                        <img src="../images/logo.png" alt="TechLake.co">
+                    </a>
+                    <p>Practical data tools for non-technical businesses.</p>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Products</h4>
+                    <ul>
+                        <li><a href="personal-tracker.html">Personal Spend Tracker</a></li>
+                        <li><a href="charity-tracker.html">Charity Spend Tracker</a></li>
+                        <li><a href="cashflow-toolkit.html">SME Cashflow Toolkit</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="mailto:support@techlake.co">support@techlake.co</a></li>
+                        <li><a href="../index.html#faq">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 TechLake. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <style>
+        /* Product Page Specific Styles */
+        .product-hero {
+            background: linear-gradient(135deg, #f0f7ff 0%, #e8f4f8 100%);
+            padding: 3rem 0 4rem;
+        }
+
+        .personal-hero {
+            background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
+        }
+
+        .breadcrumb {
+            font-size: 0.875rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .breadcrumb a {
+            color: var(--text-light);
+        }
+
+        .breadcrumb a:hover {
+            color: #6366f1;
+        }
+
+        .product-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .product-hero-subtitle {
+            font-size: 1.125rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin-bottom: 2rem;
+        }
+
+        .product-hero-price {
+            margin-bottom: 1.5rem;
+        }
+
+        .product-hero-price .price {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #6366f1;
+        }
+
+        .product-hero-price .price-note {
+            display: block;
+            color: var(--text-light);
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+        }
+
+        .product-hero-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .personal-hero .btn-primary {
+            background-color: #6366f1;
+        }
+
+        .personal-hero .btn-primary:hover {
+            background-color: #4f46e5;
+        }
+
+        .personal-hero .btn-secondary {
+            color: #6366f1;
+            border-color: #6366f1;
+        }
+
+        .personal-hero .btn-secondary:hover {
+            background-color: #6366f1;
+            color: white;
+        }
+
+        .product-hero-trust {
+            color: var(--text-light);
+            font-size: 0.875rem;
+        }
+
+        .product-problem {
+            padding: 4rem 0;
+            background: var(--background);
+        }
+
+        .problem-solution-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .problem-box, .solution-box {
+            padding: 2rem;
+            border-radius: var(--border-radius);
+        }
+
+        .problem-box {
+            background: #fef2f2;
+            border-left: 4px solid #ef4444;
+        }
+
+        .solution-box {
+            background: #f0fdf4;
+            border-left: 4px solid #10b981;
+        }
+
+        .problem-box h3, .solution-box h3 {
+            margin-bottom: 1rem;
+        }
+
+        .problem-box ul, .solution-box ul {
+            list-style: none;
+        }
+
+        .problem-box li, .solution-box li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .problem-box li::before {
+            content: "✗";
+            position: absolute;
+            left: 0;
+            color: #ef4444;
+        }
+
+        .solution-box li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #10b981;
+        }
+
+        .product-features-section {
+            padding: 4rem 0;
+            background: var(--background-alt);
+        }
+
+        .features-detail-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature-detail {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .feature-detail-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .feature-detail-icon.personal-icon {
+            background: #6366f1;
+        }
+
+        .feature-detail h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-detail p {
+            color: var(--text-light);
+            margin: 0;
+            font-size: 0.9375rem;
+        }
+
+        /* Categories Section */
+        .categories-section {
+            padding: 4rem 0;
+            background: var(--background);
+        }
+
+        .categories-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .category-item {
+            background: #eef2ff;
+            color: #4338ca;
+            padding: 0.75rem 1.25rem;
+            border-radius: 100px;
+            font-weight: 500;
+            font-size: 0.9375rem;
+        }
+
+        .what-you-get {
+            padding: 4rem 0;
+            background: var(--background-alt);
+        }
+
+        .deliverables-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .deliverable {
+            text-align: center;
+            padding: 1.5rem;
+            background: white;
+            border-radius: var(--border-radius);
+        }
+
+        .deliverable-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .deliverable h3 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .deliverable p {
+            color: var(--text-light);
+            font-size: 0.875rem;
+            margin: 0;
+        }
+
+        .tabs-preview {
+            padding: 4rem 0;
+            background: var(--background);
+        }
+
+        .tabs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .tab-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            border-left: 3px solid var(--primary-color);
+        }
+
+        .tab-card.personal-tab {
+            border-left-color: #6366f1;
+        }
+
+        .tab-card h3 {
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .tab-card p {
+            font-size: 0.875rem;
+            color: var(--text-light);
+            margin: 0;
+        }
+
+        .ideal-for {
+            padding: 4rem 0;
+            background: var(--background-alt);
+        }
+
+        .ideal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .ideal-item {
+            text-align: center;
+            background: white;
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+        }
+
+        .ideal-item h3 {
+            font-size: 1.125rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .ideal-item p {
+            color: var(--text-light);
+            margin: 0;
+            font-size: 0.9375rem;
+        }
+
+        /* How It Works Detail */
+        .how-it-works-detail {
+            padding: 4rem 0;
+            background: var(--background);
+        }
+
+        .how-steps {
+            max-width: 700px;
+            margin: 2rem auto 0;
+        }
+
+        .how-step {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .step-num {
+            width: 50px;
+            height: 50px;
+            background: #6366f1;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .step-content h3 {
+            margin-bottom: 0.25rem;
+        }
+
+        .step-content p {
+            color: var(--text-light);
+            margin: 0;
+        }
+
+        .product-cta {
+            padding: 4rem 0;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+        }
+
+        .personal-cta {
+            background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+        }
+
+        .cta-box {
+            background: white;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 3rem;
+            border-radius: var(--border-radius);
+            text-align: center;
+        }
+
+        .cta-box h2 {
+            margin-bottom: 1rem;
+        }
+
+        .cta-price .price {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #6366f1;
+        }
+
+        .cta-price .price-note {
+            display: block;
+            color: var(--text-light);
+            font-size: 0.875rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-includes {
+            text-align: left;
+            max-width: 300px;
+            margin: 0 auto 2rem;
+        }
+
+        .cta-includes li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .cta-includes li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--success-color);
+        }
+
+        .personal-cta .btn-primary {
+            background-color: #6366f1;
+        }
+
+        .personal-cta .btn-primary:hover {
+            background-color: #4f46e5;
+        }
+
+        .cta-guarantee {
+            font-size: 0.875rem;
+            color: var(--text-light);
+            margin-top: 1rem;
+        }
+
+        .product-faq {
+            padding: 4rem 0;
+            background: var(--background-alt);
+        }
+
+        .faq-list {
+            max-width: 800px;
+            margin: 2rem auto 0;
+        }
+
+        .product-faq .faq-item {
+            background: white;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-radius: var(--border-radius);
+        }
+
+        @media (max-width: 768px) {
+            .product-hero h1 {
+                font-size: 2rem;
+            }
+
+            .product-hero-buttons {
+                flex-direction: column;
+            }
+
+            .cta-box {
+                padding: 2rem;
+            }
+
+            .how-step {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .step-num {
+                margin: 0 auto;
+            }
+        }
+    </style>
+</body>
+</html>

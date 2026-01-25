@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Charity Spend Tracker - Track restricted and unrestricted funds, compare budget vs actual, and generate trustee-ready reports. Designed for small charities and non-profits.">
+    <title>Charity Spend Tracker | TechLake</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="../" class="logo">
+                <img src="../images/logo.png" alt="TechLake.co">
+            </a>
+            <ul class="nav-links">
+                <li><a href="../index.html#products">Products</a></li>
+                <li><a href="../index.html#how-it-works">How It Works</a></li>
+                <li><a href="../index.html#pricing">Pricing</a></li>
+                <li><a href="../index.html#faq">FAQ</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Product Hero -->
+    <header class="product-hero charity-hero">
+        <div class="container">
+            <div class="product-hero-content">
+                <div class="breadcrumb">
+                    <a href="../index.html">Home</a> / <span>Charity Spend Tracker</span>
+                </div>
+                <h1>Charity Spend Tracker</h1>
+                <p class="product-hero-subtitle">
+                    Track restricted and unrestricted funds, compare budget vs actual spending,
+                    and generate trustee-ready reports — designed specifically for small charities.
+                </p>
+                <div class="product-hero-price">
+                    <span class="price">£29</span>
+                    <span class="price-note">One-time purchase • Instant download</span>
+                </div>
+                <div class="product-hero-buttons">
+                    <!-- Replace href with your LemonSqueezy/Gumroad checkout link -->
+                    <a href="#" class="btn btn-primary btn-large">Buy Now - £29</a>
+                    <a href="#features" class="btn btn-secondary">See What's Included</a>
+                </div>
+                <div class="product-hero-trust">
+                    <span>Works with Google Sheets & Microsoft Excel</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Problem/Solution Section -->
+    <section class="product-problem">
+        <div class="container">
+            <div class="problem-solution-grid">
+                <div class="problem-box">
+                    <h3>The Problem</h3>
+                    <ul>
+                        <li>"I can't tell which funds are restricted and which aren't"</li>
+                        <li>"We're always over or under budget but don't see it coming"</li>
+                        <li>"Creating reports for trustees takes hours"</li>
+                        <li>"Accounting software is too expensive for our small charity"</li>
+                    </ul>
+                </div>
+                <div class="solution-box">
+                    <h3>The Solution</h3>
+                    <ul>
+                        <li>Clear separation of restricted and unrestricted funds</li>
+                        <li>Budget vs actual comparison updated in real-time</li>
+                        <li>One-click trustee report ready to print</li>
+                        <li>One-time purchase, no ongoing costs</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="product-features-section">
+        <div class="container">
+            <h2>What's Included</h2>
+            <p class="section-subtitle">Purpose-built for charity financial management</p>
+
+            <div class="features-detail-grid">
+                <div class="feature-detail">
+                    <div class="feature-detail-icon charity-icon">1</div>
+                    <h3>Restricted vs Unrestricted Fund Tracking</h3>
+                    <p>Every income and expense is tagged as Restricted or Unrestricted. See fund balances at a glance and ensure you're spending restricted funds correctly.</p>
+                </div>
+
+                <div class="feature-detail">
+                    <div class="feature-detail-icon charity-icon">2</div>
+                    <h3>Budget vs Actual Comparison</h3>
+                    <p>Enter your annual budget by category and watch actual figures update as you record transactions. See variances immediately and avoid end-of-year surprises.</p>
+                </div>
+
+                <div class="feature-detail">
+                    <div class="feature-detail-icon charity-icon">3</div>
+                    <h3>Charity-Specific Categories</h3>
+                    <p>Pre-built categories that match charity reporting requirements: Charitable Activities, Staff Costs, Premises, Administration, Fundraising, and Governance.</p>
+                </div>
+
+                <div class="feature-detail">
+                    <div class="feature-detail-icon charity-icon">4</div>
+                    <h3>Fund Summary Dashboard</h3>
+                    <p>Visual overview of your fund balances with charts showing fund allocation and income vs expenses by fund type. Perfect for trustee meetings.</p>
+                </div>
+
+                <div class="feature-detail">
+                    <div class="feature-detail-icon charity-icon">5</div>
+                    <h3>Grant Income Tracking</h3>
+                    <p>Record grants with references and notes. Easily see which grants are restricted and track spending against them.</p>
+                </div>
+
+                <div class="feature-detail">
+                    <div class="feature-detail-icon charity-icon">6</div>
+                    <h3>Trustee-Ready Report</h3>
+                    <p>Statement of Financial Activities format that trustees expect. Print or share as PDF. Includes approval signature section.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fund Types Explained -->
+    <section class="fund-types-section">
+        <div class="container">
+            <h2>Understanding Fund Types</h2>
+            <p class="section-subtitle">The foundation of charity accounting</p>
+
+            <div class="fund-types-grid">
+                <div class="fund-type unrestricted">
+                    <h3>Unrestricted Funds</h3>
+                    <p class="fund-description">Money that can be used for <strong>any charitable purpose</strong> at the trustees' discretion.</p>
+                    <h4>Examples:</h4>
+                    <ul>
+                        <li>General donations without conditions</li>
+                        <li>Membership fees</li>
+                        <li>Fundraising event income</li>
+                        <li>Trading income</li>
+                    </ul>
+                    <div class="fund-note">You decide how to spend these funds.</div>
+                </div>
+
+                <div class="fund-type restricted">
+                    <h3>Restricted Funds</h3>
+                    <p class="fund-description">Money that <strong>must be used for a specific purpose</strong> as specified by the donor.</p>
+                    <h4>Examples:</h4>
+                    <ul>
+                        <li>"For youth services only" grants</li>
+                        <li>Donations "for building repairs"</li>
+                        <li>Legacies "for scholarships"</li>
+                        <li>Project-specific funding</li>
+                    </ul>
+                    <div class="fund-note">Spending is limited to the stated purpose.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What You Get Section -->
+    <section class="what-you-get">
+        <div class="container">
+            <h2>What You Get</h2>
+            <div class="deliverables-grid">
+                <div class="deliverable">
+                    <div class="deliverable-icon">📊</div>
+                    <h3>Google Sheets Template</h3>
+                    <p>Ready-to-use Google Sheets file with all tabs, formulas, charts, and formatting pre-built.</p>
+                </div>
+                <div class="deliverable">
+                    <div class="deliverable-icon">📁</div>
+                    <h3>Excel Version</h3>
+                    <p>Same template in .xlsx format for Microsoft Excel users.</p>
+                </div>
+                <div class="deliverable">
+                    <div class="deliverable-icon">📖</div>
+                    <h3>Quick Start Guide</h3>
+                    <p>Step-by-step PDF guide explaining fund types and how to use the tracker.</p>
+                </div>
+                <div class="deliverable">
+                    <div class="deliverable-icon">📧</div>
+                    <h3>Email Support</h3>
+                    <p>Stuck? Email us and get a response within 24 hours.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tabs Preview -->
+    <section class="tabs-preview">
+        <div class="container">
+            <h2>Inside the Tracker</h2>
+            <p class="section-subtitle">7 interconnected tabs designed for charity accounting</p>
+
+            <div class="tabs-grid">
+                <div class="tab-card charity-tab">
+                    <h3>Welcome</h3>
+                    <p>Quick start guide and fund type explanations</p>
+                </div>
+                <div class="tab-card charity-tab">
+                    <h3>Settings</h3>
+                    <p>Charity name, financial year, opening fund balances</p>
+                </div>
+                <div class="tab-card charity-tab">
+                    <h3>Income</h3>
+                    <p>All income with Restricted/Unrestricted allocation</p>
+                </div>
+                <div class="tab-card charity-tab">
+                    <h3>Expenses</h3>
+                    <p>All expenses by category with fund allocation</p>
+                </div>
+                <div class="tab-card charity-tab">
+                    <h3>Budget vs Actual</h3>
+                    <p>Compare budgeted figures against actual spending</p>
+                </div>
+                <div class="tab-card charity-tab">
+                    <h3>Fund Summary</h3>
+                    <p>Visual dashboard of fund balances and charts</p>
+                </div>
+                <div class="tab-card charity-tab">
+                    <h3>Report</h3>
+                    <p>Trustee-ready Statement of Financial Activities</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ideal For Section -->
+    <section class="ideal-for">
+        <div class="container">
+            <h2>Ideal For</h2>
+            <div class="ideal-grid">
+                <div class="ideal-item">
+                    <h3>Small Charities</h3>
+                    <p>Under £250k income and don't need complex accounting software</p>
+                </div>
+                <div class="ideal-item">
+                    <h3>Community Groups</h3>
+                    <p>Local organisations with grants and donations to track</p>
+                </div>
+                <div class="ideal-item">
+                    <h3>Non-Profits</h3>
+                    <p>Any organisation needing fund-based accounting</p>
+                </div>
+                <div class="ideal-item">
+                    <h3>Volunteer Treasurers</h3>
+                    <p>Non-accountants managing charity finances</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing CTA -->
+    <section class="product-cta charity-cta">
+        <div class="container">
+            <div class="cta-box">
+                <h2>Get the Charity Spend Tracker</h2>
+                <div class="cta-price">
+                    <span class="price">£29</span>
+                    <span class="price-note">One-time purchase • Instant download • 14-day refund guarantee</span>
+                </div>
+                <ul class="cta-includes">
+                    <li>Google Sheets + Excel versions</li>
+                    <li>Restricted/Unrestricted fund tracking</li>
+                    <li>Budget vs Actual comparison</li>
+                    <li>Fund summary dashboard with charts</li>
+                    <li>Trustee report template</li>
+                    <li>Quick start guide</li>
+                    <li>Email support</li>
+                    <li>Lifetime access</li>
+                </ul>
+                <!-- Replace href with your LemonSqueezy/Gumroad checkout link -->
+                <a href="#" class="btn btn-primary btn-large">Buy Now - £29</a>
+                <p class="cta-guarantee">Not satisfied? Get a full refund within 14 days. No questions asked.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="product-faq">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+
+            <div class="faq-list">
+                <div class="faq-item">
+                    <h3>Is this suitable for registered charities?</h3>
+                    <p>Yes! The tracker follows standard charity accounting principles with proper fund tracking and categories that align with Charity Commission reporting requirements.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>What's the difference between this and the SME Cashflow Toolkit?</h3>
+                    <p>The Charity Spend Tracker is designed specifically for charities with Restricted/Unrestricted fund tracking, Budget vs Actual comparison, and trustee reporting. The SME Toolkit focuses on cashflow forecasting and scenario modelling for commercial businesses.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Can our volunteer treasurer use this?</h3>
+                    <p>Absolutely. It's designed for non-accountants. All formulas are pre-built — just enter income and expenses in the yellow cells. The quick start guide explains everything including fund types.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Will this work for our end-of-year accounts?</h3>
+                    <p>The Report tab generates a Statement of Financial Activities (SOFA) format that matches what most small charities need. You can share this with your independent examiner or accountant.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>How do I track multiple grants?</h3>
+                    <p>Each income entry has a Reference field and Notes field. Record each grant as a separate line with its reference number. Mark it as Restricted if the grant has conditions, or Unrestricted if it's general funding.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>What if we don't have restricted funds?</h3>
+                    <p>That's fine! Simply mark all your income and expenses as Unrestricted. The tracker will work perfectly for unrestricted-only charities while giving you the option to add restricted funds later.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="../" class="logo">
+                        <img src="../images/logo.png" alt="TechLake.co">
+                    </a>
+                    <p>Practical data tools for non-technical businesses.</p>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Products</h4>
+                    <ul>
+                        <li><a href="cashflow-toolkit.html">SME Cashflow Toolkit</a></li>
+                        <li><a href="charity-tracker.html">Charity Spend Tracker</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="mailto:support@techlake.co">support@techlake.co</a></li>
+                        <li><a href="../index.html#faq">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 TechLake. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <style>
+        /* Product Page Specific Styles */
+        .product-hero {
+            background: linear-gradient(135deg, #f0f7ff 0%, #e8f4f8 100%);
+            padding: 3rem 0 4rem;
+        }
+
+        .charity-hero {
+            background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
+        }
+
+        .breadcrumb {
+            font-size: 0.875rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .breadcrumb a {
+            color: var(--text-light);
+        }
+
+        .breadcrumb a:hover {
+            color: var(--secondary-color);
+        }
+
+        .product-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .product-hero-subtitle {
+            font-size: 1.125rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin-bottom: 2rem;
+        }
+
+        .product-hero-price {
+            margin-bottom: 1.5rem;
+        }
+
+        .product-hero-price .price {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+        }
+
+        .product-hero-price .price-note {
+            display: block;
+            color: var(--text-light);
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+        }
+
+        .product-hero-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .charity-hero .btn-primary {
+            background-color: var(--secondary-color);
+        }
+
+        .charity-hero .btn-primary:hover {
+            background-color: #236b27;
+        }
+
+        .charity-hero .btn-secondary {
+            color: var(--secondary-color);
+            border-color: var(--secondary-color);
+        }
+
+        .charity-hero .btn-secondary:hover {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        .product-hero-trust {
+            color: var(--text-light);
+            font-size: 0.875rem;
+        }
+
+        .product-problem {
+            padding: 4rem 0;
+            background: var(--background);
+        }
+
+        .problem-solution-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .problem-box, .solution-box {
+            padding: 2rem;
+            border-radius: var(--border-radius);
+        }
+
+        .problem-box {
+            background: #fef2f2;
+            border-left: 4px solid #ef4444;
+        }
+
+        .solution-box {
+            background: #f0fdf4;
+            border-left: 4px solid #10b981;
+        }
+
+        .problem-box h3, .solution-box h3 {
+            margin-bottom: 1rem;
+        }
+
+        .problem-box ul, .solution-box ul {
+            list-style: none;
+        }
+
+        .problem-box li, .solution-box li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .problem-box li::before {
+            content: "✗";
+            position: absolute;
+            left: 0;
+            color: #ef4444;
+        }
+
+        .solution-box li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #10b981;
+        }
+
+        .product-features-section {
+            padding: 4rem 0;
+            background: var(--background-alt);
+        }
+
+        .features-detail-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature-detail {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .feature-detail-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .feature-detail-icon.charity-icon {
+            background: var(--secondary-color);
+        }
+
+        .feature-detail h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-detail p {
+            color: var(--text-light);
+            margin: 0;
+            font-size: 0.9375rem;
+        }
+
+        /* Fund Types Section */
+        .fund-types-section {
+            padding: 4rem 0;
+            background: var(--background);
+        }
+
+        .fund-types-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .fund-type {
+            padding: 2rem;
+            border-radius: var(--border-radius);
+        }
+
+        .fund-type.unrestricted {
+            background: #e3f2fd;
+            border: 2px solid #2196f3;
+        }
+
+        .fund-type.restricted {
+            background: #fff3e0;
+            border: 2px solid #ff9800;
+        }
+
+        .fund-type h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .fund-type.unrestricted h3 {
+            color: #1565c0;
+        }
+
+        .fund-type.restricted h3 {
+            color: #e65100;
+        }
+
+        .fund-description {
+            margin-bottom: 1rem;
+        }
+
+        .fund-type h4 {
+            font-size: 0.875rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-light);
+        }
+
+        .fund-type ul {
+            list-style: none;
+            margin-bottom: 1rem;
+        }
+
+        .fund-type li {
+            padding: 0.25rem 0;
+            padding-left: 1rem;
+            position: relative;
+            font-size: 0.9375rem;
+        }
+
+        .fund-type li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+        }
+
+        .fund-note {
+            font-style: italic;
+            font-size: 0.875rem;
+            color: var(--text-light);
+            padding-top: 0.5rem;
+            border-top: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .what-you-get {
+            padding: 4rem 0;
+            background: var(--background-alt);
+        }
+
+        .deliverables-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .deliverable {
+            text-align: center;
+            padding: 1.5rem;
+            background: white;
+            border-radius: var(--border-radius);
+        }
+
+        .deliverable-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .deliverable h3 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .deliverable p {
+            color: var(--text-light);
+            font-size: 0.875rem;
+            margin: 0;
+        }
+
+        .tabs-preview {
+            padding: 4rem 0;
+            background: var(--background);
+        }
+
+        .tabs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .tab-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            border-left: 3px solid var(--primary-color);
+        }
+
+        .tab-card.charity-tab {
+            border-left-color: var(--secondary-color);
+        }
+
+        .tab-card h3 {
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .tab-card p {
+            font-size: 0.875rem;
+            color: var(--text-light);
+            margin: 0;
+        }
+
+        .ideal-for {
+            padding: 4rem 0;
+            background: var(--background-alt);
+        }
+
+        .ideal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .ideal-item {
+            text-align: center;
+            background: white;
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+        }
+
+        .ideal-item h3 {
+            font-size: 1.125rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .ideal-item p {
+            color: var(--text-light);
+            margin: 0;
+            font-size: 0.9375rem;
+        }
+
+        .product-cta {
+            padding: 4rem 0;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+        }
+
+        .charity-cta {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, #1b5e20 100%);
+        }
+
+        .cta-box {
+            background: white;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 3rem;
+            border-radius: var(--border-radius);
+            text-align: center;
+        }
+
+        .cta-box h2 {
+            margin-bottom: 1rem;
+        }
+
+        .cta-price .price {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+        }
+
+        .cta-price .price-note {
+            display: block;
+            color: var(--text-light);
+            font-size: 0.875rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-includes {
+            text-align: left;
+            max-width: 300px;
+            margin: 0 auto 2rem;
+        }
+
+        .cta-includes li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .cta-includes li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--success-color);
+        }
+
+        .charity-cta .btn-primary {
+            background-color: var(--secondary-color);
+        }
+
+        .charity-cta .btn-primary:hover {
+            background-color: #236b27;
+        }
+
+        .cta-guarantee {
+            font-size: 0.875rem;
+            color: var(--text-light);
+            margin-top: 1rem;
+        }
+
+        .product-faq {
+            padding: 4rem 0;
+            background: var(--background-alt);
+        }
+
+        .faq-list {
+            max-width: 800px;
+            margin: 2rem auto 0;
+        }
+
+        .product-faq .faq-item {
+            background: white;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-radius: var(--border-radius);
+        }
+
+        @media (max-width: 768px) {
+            .product-hero h1 {
+                font-size: 2rem;
+            }
+
+            .product-hero-buttons {
+                flex-direction: column;
+            }
+
+            .cta-box {
+                padding: 2rem;
+            }
+        }
+    </style>
+</body>
+</html>
