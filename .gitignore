@@ -1,0 +1,17 @@
+# Deployment files (keep only on server, not in repo)
+deploy.php
+deploy.log
+
+# Environment files
+.env
+.env.local
+
+# IDE/Editor
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
