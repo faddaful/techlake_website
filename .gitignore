@@ -1,6 +1,7 @@
 # Deployment files (keep only on server, not in repo)
 deploy.php
 deploy.log
+.log
 
 # Environment files
 .env
