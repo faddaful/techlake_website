@@ -209,6 +209,26 @@ img { max-width: 100%; height: auto; }
     font-size: 1.125rem;
 }
 
+.btn-block {
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+/* Light button variant - for use on dark backgrounds with dark text */
+.btn-light {
+    background: white;
+    color: var(--bg-primary);
+    border: none;
+}
+
+.btn-light:hover {
+    background: #f0f0f0;
+    color: var(--bg-primary);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+}
+
 /* ================================
    NAVIGATION - Glassmorphism
    ================================ */
@@ -520,6 +540,27 @@ img { max-width: 100%; height: auto; }
     margin-bottom: 4rem;
 }
 
+/* Hero Trust Section */
+.hero-trust {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+    color: var(--text-secondary);
+    font-size: 0.9375rem;
+}
+
+.trust-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-full);
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
 /* Stats Cards */
 .hero-stats {
     display: flex;
@@ -707,6 +748,16 @@ section {
     border-radius: var(--radius-2xl);
     border: 1px solid var(--border-color);
     position: relative;
+    color: var(--text-primary);
+    line-height: 1.8;
+}
+
+.problem-solution strong {
+    color: var(--accent-purple);
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .problem-solution::before {
@@ -747,6 +798,8 @@ section {
     transition: var(--transition);
     border: 1px solid var(--border-color);
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
 .product-card::before, .feature::before {
@@ -799,12 +852,17 @@ section {
     margin-bottom: 0.75rem;
     font-size: 1.5rem;
     color: var(--text-primary);
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .product-description {
     color: var(--text-secondary);
     margin-bottom: 1.5rem;
-    line-height: 1.7;
+    line-height: 1.8;
+    font-size: 1rem;
 }
 
 .product-features {
@@ -813,11 +871,16 @@ section {
 }
 
 .product-features li {
-    padding: 0.625rem 0;
+    padding: 0.75rem 0;
     padding-left: 2rem;
     position: relative;
-    color: var(--text-secondary);
+    color: var(--text-primary);
     font-size: 0.9375rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.product-features li:last-child {
+    border-bottom: none;
 }
 
 .product-features li::before {
@@ -836,13 +899,17 @@ section {
 }
 
 .product-ideal {
-    background: rgba(139, 92, 246, 0.1);
+    background: rgba(139, 92, 246, 0.15);
     padding: 1rem 1.25rem;
     border-radius: var(--radius-lg);
-    font-size: 0.875rem;
+    font-size: 0.9375rem;
     margin-bottom: 1.5rem;
-    border-left: 3px solid var(--accent-purple);
-    color: var(--text-secondary);
+    border-left: 4px solid var(--accent-purple);
+    color: var(--text-primary);
+}
+
+.product-ideal strong {
+    color: var(--accent-purple);
 }
 
 .product-price {
@@ -894,11 +961,14 @@ section {
 .feature h3 {
     margin-bottom: 0.75rem;
     color: var(--text-primary);
+    font-size: 1.25rem;
 }
 
 .feature p {
     color: var(--text-secondary);
     margin: 0;
+    line-height: 1.7;
+    font-size: 0.9375rem;
 }
 
 /* ================================
@@ -989,12 +1059,14 @@ section {
 .step h3 {
     margin-bottom: 0.75rem;
     color: var(--text-primary);
+    font-size: 1.25rem;
 }
 
 .step p {
     color: var(--text-secondary);
     margin: 0;
     line-height: 1.7;
+    font-size: 0.9375rem;
 }
 
 /* ================================
@@ -1193,7 +1265,7 @@ section {
     position: relative;
     border-bottom: 1px solid var(--border-color);
     font-size: 0.9375rem;
-    color: var(--text-secondary);
+    color: var(--text-primary);
 }
 
 .pricing-features li:last-child {
@@ -1276,7 +1348,8 @@ section {
 .faq-item p {
     color: var(--text-secondary);
     margin: 0;
-    line-height: 1.7;
+    line-height: 1.8;
+    font-size: 0.9375rem;
 }
 
 /* ================================
