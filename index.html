@@ -685,6 +685,15 @@
                 </div>
                 <div class="contact-form-wrapper">
                     <form class="contact-form" action="form-handler.php" method="POST" id="contactForm">
+                        <input type="hidden" name="csrf_token" id="csrfToken">
+                        <input type="hidden" name="submit_time" id="submitTime">
+                        
+                        <!-- Honeypot field - hidden from users -->
+                        <div style="display:none;">
+                            <label for="website">Website</label>
+                            <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+                        </div>
+                        
                         <div class="form-group">
                             <label for="name">Your Name</label>
                             <input type="text" id="name" name="name" placeholder="John Smith" required>
@@ -782,6 +791,23 @@
     </footer>
 
     <script>
+        // Initialize form with CSRF token and timestamp
+        function initializeForm() {
+            const form = document.getElementById('contactForm');
+            const submitTimeInput = document.getElementById('submitTime');
+            
+            // Set initial timestamp
+            submitTimeInput.value = Math.floor(Date.now() / 1000);
+            
+            // Fetch CSRF token
+            fetch('form-handler.php?action=csrf')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('csrfToken').value = data.csrf_token;
+                })
+                .catch(error => console.error('Error fetching CSRF token:', error));
+        }
+        
         // Mobile menu toggle
         document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
             document.querySelector('.nav-links').classList.toggle('active');
@@ -791,6 +817,9 @@
         // Contact form submission
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
+            
+            // Update submit time before sending
+            document.getElementById('submitTime').value = Math.floor(Date.now() / 1000);
             
             const formData = new FormData(this);
             
@@ -807,6 +836,9 @@
                     // Reset form
                     document.getElementById('contactForm').reset();
                     
+                    // Re-initialize form
+                    initializeForm();
+                    
                     // Open Tawk.to chat
                     if (window.Tawk_API) {
                         Tawk_API.toggle();
@@ -820,6 +852,9 @@
                 alert('An error occurred. Please try again.');
             });
         });
+        
+        // Initialize form when page loads
+        document.addEventListener('DOMContentLoaded', initializeForm);
     </script>
 
     <!-- Source Code Protection -->
