@@ -33,24 +33,24 @@ Options -Indexes
     RewriteRule (^\.|/\.) - [F]
 </IfModule>
 
-# Deny access to deploy script and log files from public
+# Allow deploy.php only from GitHub webhook IPs
+# The deploy script also validates HMAC signatures in PHP as a second layer
 <Files "deploy.php">
     <IfModule mod_authz_core.c>
-        Require all denied
+        Require ip 140.82.112.0/20
+        Require ip 185.199.108.0/22
+        Require ip 192.30.252.0/22
+        Require ip 143.55.64.0/20
     </IfModule>
     <IfModule !mod_authz_core.c>
-        Order allow,deny
+        Order deny,allow
         Deny from all
+        Allow from 140.82.112.0/20
+        Allow from 185.199.108.0/22
+        Allow from 192.30.252.0/22
+        Allow from 143.55.64.0/20
     </IfModule>
 </Files>
-
-# Allow deploy.php only from GitHub webhook IPs
-# Uncomment and configure if needed:
-# <Files "deploy.php">
-#     Require ip 140.82.112.0/20
-#     Require ip 185.199.108.0/22
-#     Require ip 192.30.252.0/22
-# </Files>
 
 # Prevent PHP execution in uploads directory (if any)
 <IfModule mod_rewrite.c>
