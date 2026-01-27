@@ -1,0 +1,58 @@
+# Enforce HTTPS
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Security Headers
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "DENY"
+    Header always set X-XSS-Protection "1; mode=block"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+    Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://embed.tawk.to; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://embed.tawk.to wss://vsb2.tawk.to; frame-src https://tawk.to;"
+</IfModule>
+
+# Disable directory listing
+Options -Indexes
+
+# Deny access to sensitive files
+<FilesMatch "\.(env|log|json|lock|gitignore)$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</FilesMatch>
+
+# Deny access to hidden files and directories
+<IfModule mod_rewrite.c>
+    RewriteRule (^\.|/\.) - [F]
+</IfModule>
+
+# Deny access to deploy script and log files from public
+<Files "deploy.php">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</Files>
+
+# Allow deploy.php only from GitHub webhook IPs
+# Uncomment and configure if needed:
+# <Files "deploy.php">
+#     Require ip 140.82.112.0/20
+#     Require ip 185.199.108.0/22
+#     Require ip 192.30.252.0/22
+# </Files>
+
+# Prevent PHP execution in uploads directory (if any)
+<IfModule mod_rewrite.c>
+    RewriteRule ^uploads/.*\.php$ - [F,L]
+</IfModule>
