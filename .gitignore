@@ -6,6 +6,7 @@ deploy.log
 # Environment files
 .env
 .env.local
+.htaccess
 
 # IDE/Editor
 .idea/
