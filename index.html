@@ -818,9 +818,6 @@
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Update submit time before sending
-            document.getElementById('submitTime').value = Math.floor(Date.now() / 1000);
-            
             const formData = new FormData(this);
             
             fetch('form-handler.php', {
