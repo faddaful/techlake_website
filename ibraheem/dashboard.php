@@ -1,4 +1,8 @@
 <?php
+ini_set('session.cookie_httponly', 1);
+ini_set('session.cookie_secure', 1);
+ini_set('session.use_only_cookies', 1);
+ini_set('session.cookie_samesite', 'Strict');
 session_start();
 
 // Security checks
@@ -25,13 +29,24 @@ if (isset($_GET['logout'])) {
     exit;
 }
 
-// Handle clear logs
+// Generate CSRF token for dashboard actions
+if (empty($_SESSION['dashboard_csrf_token'])) {
+    $_SESSION['dashboard_csrf_token'] = bin2hex(random_bytes(32));
+}
+
+// Handle clear logs with CSRF validation
 if (isset($_POST['clear_logs'])) {
+    if (!isset($_POST['csrf_token']) || !hash_equals($_SESSION['dashboard_csrf_token'], $_POST['csrf_token'])) {
+        http_response_code(403);
+        die('Security validation failed. Please refresh the page and try again.');
+    }
     $log_file = __DIR__ . '/../tawk-tickets.log';
     if (file_exists($log_file)) {
         file_put_contents($log_file, '');
         $clear_message = 'Log file cleared successfully.';
     }
+    // Regenerate token after use
+    $_SESSION['dashboard_csrf_token'] = bin2hex(random_bytes(32));
 }
 
 // Read log file
@@ -288,6 +303,7 @@ $logs = array_reverse($logs);
             <h2>Contact Form Submissions</h2>
             <?php if (count($logs) > 0): ?>
                 <form method="POST" style="display: inline;" onsubmit="return confirm('Are you sure? This cannot be undone.');">
+                    <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($_SESSION['dashboard_csrf_token'], ENT_QUOTES, 'UTF-8'); ?>">
                     <button type="submit" name="clear_logs" class="clear-logs-btn">Clear All Logs</button>
                 </form>
             <?php endif; ?>

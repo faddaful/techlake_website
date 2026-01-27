@@ -14,7 +14,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action']) && $_GET['act
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // SPAM PREVENTION: Check CSRF token
-    if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== ($_SESSION['csrf_token'] ?? '')) {
+    if (!isset($_POST['csrf_token']) || !isset($_SESSION['csrf_token']) ||
+        !hash_equals($_SESSION['csrf_token'], $_POST['csrf_token'])) {
         http_response_code(403);
         echo json_encode(['success' => false, 'message' => 'Security validation failed']);
         exit;
@@ -74,8 +75,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $body .= "Message: $message\n";
     $body .= "Submitted: " . date('Y-m-d H:i:s') . "\n";
     
-    $headers = "From: $email\r\n";
-    $headers .= "Reply-To: $email\r\n";
+    // Strip CRLF to prevent email header injection
+    $safe_email = str_replace(["\r", "\n", "%0a", "%0d", "%0A", "%0D"], '', $email);
+    $safe_name = str_replace(["\r", "\n", "%0a", "%0d", "%0A", "%0D"], '', $name);
+
+    $headers = "From: noreply@techlake.co\r\n";
+    $headers .= "Reply-To: $safe_email\r\n";
     
     $email_sent = mail($to, $subject, $body, $headers);
     
@@ -99,14 +104,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 function get_client_ip() {
-    if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
-        $ip = $_SERVER['HTTP_CLIENT_IP'];
-    } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-        $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
-    } else {
-        $ip = $_SERVER['REMOTE_ADDR'];
-    }
-    return $ip;
+    // Only trust REMOTE_ADDR — HTTP_CLIENT_IP and HTTP_X_FORWARDED_FOR
+    // are user-controlled headers that attackers can spoof
+    return $_SERVER['REMOTE_ADDR'];
 }
 
 function check_rate_limit($ip) {

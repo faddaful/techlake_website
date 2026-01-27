@@ -1,10 +1,15 @@
 <?php
-session_start();
-
-// Security: Set secure session settings
+// Security: Set secure session settings BEFORE session_start
 ini_set('session.cookie_httponly', 1);
-ini_set('session.cookie_secure', 1); // Only for HTTPS
+ini_set('session.cookie_secure', 1);
+ini_set('session.use_only_cookies', 1);
+ini_set('session.cookie_samesite', 'Strict');
+session_start();
 session_regenerate_id(true);
+
+// Load environment variables
+require_once __DIR__ . '/../env-loader.php';
+load_env(__DIR__ . '/../.env');
 
 // Rate limiting: Prevent brute force attacks
 $max_attempts = 5;
@@ -81,8 +86,12 @@ function clear_failed_attempts() {
     }
 }
 
-// Admin password (hashed with password_hash for security)
-$ADMIN_PASSWORD_HASH = password_hash('***REMOVED***', PASSWORD_BCRYPT, ['cost' => 12]);
+// Load admin password hash from environment variable
+$ADMIN_PASSWORD_HASH = getenv('ADMIN_PASSWORD_HASH');
+if (empty($ADMIN_PASSWORD_HASH)) {
+    error_log('CRITICAL: ADMIN_PASSWORD_HASH not set in environment');
+    die('Server configuration error. Contact administrator.');
+}
 
 // Check rate limit first
 $rate_limit = check_rate_limit();
@@ -91,8 +100,13 @@ $error = '';
 if (!$rate_limit['allowed']) {
     $error = $rate_limit['message'];
 } elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Validate CSRF token
+    if (!isset($_POST['csrf_token']) || !isset($_SESSION['admin_csrf_token']) ||
+        !hash_equals($_SESSION['admin_csrf_token'], $_POST['csrf_token'])) {
+        $error = 'Security validation failed. Please refresh and try again.';
+    } else {
     $password = $_POST['password'] ?? '';
-    
+
     // Verify password using bcrypt hash
     if (password_verify($password, $ADMIN_PASSWORD_HASH)) {
         clear_failed_attempts();
@@ -104,6 +118,7 @@ if (!$rate_limit['allowed']) {
         record_failed_attempt();
         $error = 'Invalid password. Please try again.';
     }
+    } // end CSRF else
 }
 
 // If already logged in, redirect to dashboard
@@ -111,6 +126,9 @@ if ($_SESSION['admin_logged_in'] ?? false) {
     header('Location: dashboard.php');
     exit;
 }
+
+// Generate CSRF token for login form
+$_SESSION['admin_csrf_token'] = bin2hex(random_bytes(32));
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -245,6 +263,7 @@ if ($_SESSION['admin_logged_in'] ?? false) {
         <?php endif; ?>
         
         <form method="POST" autocomplete="off">
+            <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($_SESSION['admin_csrf_token'], ENT_QUOTES, 'UTF-8'); ?>">
             <div class="form-group">
                 <label for="password">Admin Password</label>
                 <input type="password" id="password" name="password" placeholder="Enter your secure password" required autofocus autocomplete="off">
