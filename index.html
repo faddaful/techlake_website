@@ -9,6 +9,24 @@
       gtag('js', new Date());
       gtag('config', 'AW-17937524967');
     </script>
+    <!-- Event snippet for Purchase conversion page -->
+    <script>
+    function gtag_report_conversion(url) {
+      var callback = function () {
+        if (typeof(url) != 'undefined') {
+          window.location = url;
+        }
+      };
+      gtag('event', 'conversion', {
+          'send_to': 'AW-17937524967/sOnwCLG1mvQbEOfRo-lC',
+          'value': 1.0,
+          'currency': 'USD',
+          'transaction_id': '',
+          'event_callback': callback
+      });
+      return false;
+    }
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="TechLake - AI tools that help small businesses make more money. Free website builder, customer engagement, sales, payroll, HR, and more.">
@@ -733,7 +751,7 @@
                             <label for="message">Anything Else You Want Us to Know?</label>
                             <textarea id="message" name="message" rows="3" placeholder="Tell us about your business..."></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-block">Get Free Help</button>
+                        <button type="submit" class="btn btn-primary btn-block" onclick="gtag_report_conversion()">Get Free Help</button>
                         <p style="text-align: center; color: var(--text-light); font-size: 0.875rem; margin-top: 1rem;">No sales pressure. Just honest help.</p>
                     </form>
                 </div>

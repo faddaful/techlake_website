@@ -9,6 +9,24 @@
       gtag('js', new Date());
       gtag('config', 'AW-17937524967');
     </script>
+    <!-- Event snippet for Purchase conversion page -->
+    <script>
+    function gtag_report_conversion(url) {
+      var callback = function () {
+        if (typeof(url) != 'undefined') {
+          window.location = url;
+        }
+      };
+      gtag('event', 'conversion', {
+          'send_to': 'AW-17937524967/sOnwCLG1mvQbEOfRo-lC',
+          'value': 1.0,
+          'currency': 'USD',
+          'transaction_id': '',
+          'event_callback': callback
+      });
+      return false;
+    }
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Personal Spend Tracker - Track daily expenses, set budgets by category, and review spending monthly and yearly. Simple personal finance for everyone.">
@@ -68,7 +86,7 @@
                 </div>
                 <div class="product-hero-buttons">
                     <!-- Replace href with your LemonSqueezy/Gumroad checkout link -->
-                    <a href="https://techlake.lemonsqueezy.com/checkout/buy/768a3b4d-7be3-47f7-858c-2daaeb4fff33" class="btn btn-primary btn-large">Buy Now - £19</a>
+                    <a href="https://techlake.lemonsqueezy.com/checkout/buy/768a3b4d-7be3-47f7-858c-2daaeb4fff33" class="btn btn-primary btn-large" onclick="return gtag_report_conversion('https://techlake.lemonsqueezy.com/checkout/buy/768a3b4d-7be3-47f7-858c-2daaeb4fff33')">Buy Now - £19</a>
                     <a href="#features" class="btn btn-secondary">See What's Included</a>
                 </div>
                 <div class="product-hero-trust">
@@ -321,7 +339,7 @@
                     <li>Email support</li>
                     <li>Lifetime access</li>
                 </ul>
-                <a href="https://techlake.lemonsqueezy.com/checkout/buy/768a3b4d-7be3-47f7-858c-2daaeb4fff33" class="btn btn-primary btn-large">Buy Now - £19</a>
+                <a href="https://techlake.lemonsqueezy.com/checkout/buy/768a3b4d-7be3-47f7-858c-2daaeb4fff33" class="btn btn-primary btn-large" onclick="return gtag_report_conversion('https://techlake.lemonsqueezy.com/checkout/buy/768a3b4d-7be3-47f7-858c-2daaeb4fff33')">Buy Now - £19</a>
                 <p class="cta-guarantee">Not satisfied? Get a full refund within 14 days. No questions asked.</p>
             </div>
         </div>
