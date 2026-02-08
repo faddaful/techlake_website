@@ -15,7 +15,13 @@
 
     var allRates = null;
     var activeCurrency = null;
-    var originals = []; // stores original price data for re-conversion
+    var originals = [];
+    var selectorBuilt = false;
+    var listEl = null;
+    var dropdownEl = null;
+    var searchInputEl = null;
+    var wrapperEl = null;
+    var btnLabelEl = null;
 
     // ---- Cache helpers ----
 
@@ -108,7 +114,6 @@
     function storeOriginals() {
         originals = [];
 
-        // 1. <span class="price">$49</span>
         var priceEls = document.querySelectorAll('.price');
         for (var i = 0; i < priceEls.length; i++) {
             var el = priceEls[i];
@@ -118,7 +123,6 @@
             }
         }
 
-        // 2. <span class="currency">$</span> + <span class="amount">49</span>
         var amountContainers = document.querySelectorAll('.pricing-amount');
         for (var j = 0; j < amountContainers.length; j++) {
             var container = amountContainers[j];
@@ -133,7 +137,6 @@
             }
         }
 
-        // 3. Inline prices in .price-note, .btn, badges, .cta-guarantee
         var inlineSelectors = ['.price-note', '.btn', '.bundle-badge', '.product-badge', '.cta-guarantee'];
         for (var s = 0; s < inlineSelectors.length; s++) {
             var els = document.querySelectorAll(inlineSelectors[s]);
@@ -212,42 +215,107 @@
 
     // ---- Currency selector UI ----
 
-    function buildSelector(detectedCurrency) {
-        if (!allRates) return;
+    function buildSelector() {
+        if (selectorBuilt) return;
+        selectorBuilt = true;
 
-        // Get sorted list of all currency codes
-        var codes = Object.keys(allRates).sort(function (a, b) {
-            return getCurrencyName(a).localeCompare(getCurrencyName(b));
-        });
-
-        // Build the floating button
-        var wrapper = document.createElement('div');
-        wrapper.className = 'currency-selector';
+        wrapperEl = document.createElement('div');
+        wrapperEl.className = 'currency-selector';
+        wrapperEl.id = 'currencySelector';
 
         var btn = document.createElement('button');
         btn.className = 'currency-selector-btn';
         btn.setAttribute('aria-label', 'Change currency');
         btn.setAttribute('title', 'Change currency');
-        btn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><span class="currency-selector-label">' + (activeCurrency || 'GBP') + '</span>';
 
-        var dropdown = document.createElement('div');
-        dropdown.className = 'currency-dropdown';
-        dropdown.style.display = 'none';
+        var svgIcon = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>';
+
+        btnLabelEl = document.createElement('span');
+        btnLabelEl.className = 'currency-selector-label';
+        btnLabelEl.textContent = activeCurrency || 'GBP';
+
+        btn.innerHTML = svgIcon;
+        btn.appendChild(btnLabelEl);
+
+        dropdownEl = document.createElement('div');
+        dropdownEl.className = 'currency-dropdown';
+        dropdownEl.style.display = 'none';
 
         // Search input
         var searchWrap = document.createElement('div');
         searchWrap.className = 'currency-search-wrap';
-        var searchInput = document.createElement('input');
-        searchInput.type = 'text';
-        searchInput.className = 'currency-search';
-        searchInput.placeholder = 'Search currencies\u2026';
-        searchInput.setAttribute('autocomplete', 'off');
-        searchWrap.appendChild(searchInput);
-        dropdown.appendChild(searchWrap);
+        searchInputEl = document.createElement('input');
+        searchInputEl.type = 'text';
+        searchInputEl.className = 'currency-search';
+        searchInputEl.placeholder = 'Search currencies\u2026';
+        searchInputEl.setAttribute('autocomplete', 'off');
+        searchWrap.appendChild(searchInputEl);
+        dropdownEl.appendChild(searchWrap);
 
-        // Currency list
-        var list = document.createElement('div');
-        list.className = 'currency-list';
+        // Currency list container
+        listEl = document.createElement('div');
+        listEl.className = 'currency-list';
+
+        // Show loading state if rates haven't arrived yet
+        if (allRates) {
+            populateList();
+        } else {
+            var loading = document.createElement('div');
+            loading.className = 'currency-section-header';
+            loading.textContent = 'Loading currencies\u2026';
+            loading.id = 'currencyLoading';
+            listEl.appendChild(loading);
+        }
+
+        dropdownEl.appendChild(listEl);
+        wrapperEl.appendChild(btn);
+        wrapperEl.appendChild(dropdownEl);
+        document.body.appendChild(wrapperEl);
+
+        // Toggle dropdown
+        function toggleDropdown(show) {
+            var isOpen = show !== undefined ? show : dropdownEl.style.display === 'none';
+            dropdownEl.style.display = isOpen ? 'flex' : 'none';
+            if (isOpen) {
+                searchInputEl.value = '';
+                filterList('');
+                searchInputEl.focus();
+            }
+        }
+
+        btn.addEventListener('click', function (e) {
+            e.stopPropagation();
+            toggleDropdown();
+        });
+
+        document.addEventListener('click', function (e) {
+            if (!wrapperEl.contains(e.target)) {
+                toggleDropdown(false);
+            }
+        });
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') toggleDropdown(false);
+        });
+
+        searchInputEl.addEventListener('input', function () {
+            filterList(this.value);
+        });
+
+        dropdownEl.addEventListener('click', function (e) {
+            e.stopPropagation();
+        });
+    }
+
+    function populateList() {
+        if (!listEl || !allRates) return;
+
+        // Clear existing content (e.g. loading message)
+        listEl.innerHTML = '';
+
+        var codes = Object.keys(allRates).sort(function (a, b) {
+            return getCurrencyName(a).localeCompare(getCurrencyName(b));
+        });
 
         function createItem(code, section) {
             var item = document.createElement('button');
@@ -258,11 +326,13 @@
 
             var symbol = getCurrencySymbol(code);
             var name = getCurrencyName(code);
-            item.innerHTML = '<span class="currency-item-symbol">' + symbol + '</span><span class="currency-item-name">' + name + '</span><span class="currency-item-code">' + code + '</span>';
+            item.innerHTML = '<span class="currency-item-symbol">' + symbol + '</span>' +
+                '<span class="currency-item-name">' + name + '</span>' +
+                '<span class="currency-item-code">' + code + '</span>';
 
             item.addEventListener('click', function () {
                 selectCurrency(code);
-                toggleDropdown(false);
+                dropdownEl.style.display = 'none';
             });
 
             return item;
@@ -272,11 +342,11 @@
         var popularHeader = document.createElement('div');
         popularHeader.className = 'currency-section-header';
         popularHeader.textContent = 'Popular';
-        list.appendChild(popularHeader);
+        listEl.appendChild(popularHeader);
 
         for (var p = 0; p < POPULAR_CODES.length; p++) {
             if (allRates[POPULAR_CODES[p]]) {
-                list.appendChild(createItem(POPULAR_CODES[p], 'popular'));
+                listEl.appendChild(createItem(POPULAR_CODES[p], 'popular'));
             }
         }
 
@@ -284,96 +354,51 @@
         var allHeader = document.createElement('div');
         allHeader.className = 'currency-section-header';
         allHeader.textContent = 'All currencies';
-        list.appendChild(allHeader);
+        listEl.appendChild(allHeader);
 
         for (var i = 0; i < codes.length; i++) {
-            list.appendChild(createItem(codes[i], 'all'));
+            listEl.appendChild(createItem(codes[i], 'all'));
+        }
+    }
+
+    function filterList(query) {
+        if (!listEl) return;
+        var q = query.toLowerCase();
+        var items = listEl.querySelectorAll('.currency-item');
+        var headers = listEl.querySelectorAll('.currency-section-header');
+        var hasPopular = false;
+        var hasAll = false;
+
+        for (var i = 0; i < items.length; i++) {
+            var code = items[i].getAttribute('data-code').toLowerCase();
+            var name = items[i].querySelector('.currency-item-name').textContent.toLowerCase();
+            var symbol = items[i].querySelector('.currency-item-symbol').textContent.toLowerCase();
+            var match = !q || code.indexOf(q) !== -1 || name.indexOf(q) !== -1 || symbol.indexOf(q) !== -1;
+            items[i].style.display = match ? '' : 'none';
+
+            if (match) {
+                if (items[i].getAttribute('data-section') === 'popular') hasPopular = true;
+                else hasAll = true;
+            }
         }
 
-        dropdown.appendChild(list);
-        wrapper.appendChild(btn);
-        wrapper.appendChild(dropdown);
-        document.body.appendChild(wrapper);
-
-        // Toggle dropdown
-        function toggleDropdown(show) {
-            var isOpen = show !== undefined ? show : dropdown.style.display === 'none';
-            dropdown.style.display = isOpen ? 'flex' : 'none';
-            if (isOpen) {
-                searchInput.value = '';
-                filterList('');
-                searchInput.focus();
-            }
-        }
-
-        btn.addEventListener('click', function (e) {
-            e.stopPropagation();
-            toggleDropdown();
-        });
-
-        // Close on outside click
-        document.addEventListener('click', function (e) {
-            if (!wrapper.contains(e.target)) {
-                toggleDropdown(false);
-            }
-        });
-
-        // Close on Escape
-        document.addEventListener('keydown', function (e) {
-            if (e.key === 'Escape') toggleDropdown(false);
-        });
-
-        // Search filtering
-        function filterList(query) {
-            var q = query.toLowerCase();
-            var items = list.querySelectorAll('.currency-item');
-            var headers = list.querySelectorAll('.currency-section-header');
-            var hasPopular = false;
-            var hasAll = false;
-
-            for (var i = 0; i < items.length; i++) {
-                var code = items[i].getAttribute('data-code').toLowerCase();
-                var name = items[i].querySelector('.currency-item-name').textContent.toLowerCase();
-                var symbol = items[i].querySelector('.currency-item-symbol').textContent.toLowerCase();
-                var match = !q || code.indexOf(q) !== -1 || name.indexOf(q) !== -1 || symbol.indexOf(q) !== -1;
-                items[i].style.display = match ? '' : 'none';
-
-                if (match) {
-                    if (items[i].getAttribute('data-section') === 'popular') hasPopular = true;
-                    else hasAll = true;
-                }
-            }
-
-            // Show/hide section headers
+        if (headers.length >= 2) {
             headers[0].style.display = hasPopular ? '' : 'none';
             headers[1].style.display = hasAll ? '' : 'none';
         }
-
-        searchInput.addEventListener('input', function () {
-            filterList(this.value);
-        });
-
-        // Prevent dropdown from closing when clicking inside
-        dropdown.addEventListener('click', function (e) {
-            e.stopPropagation();
-        });
     }
 
     function selectCurrency(code) {
         activeCurrency = code;
         setUserPref(code);
 
-        // Update button label
-        var label = document.querySelector('.currency-selector-label');
-        if (label) label.textContent = code;
+        if (btnLabelEl) btnLabelEl.textContent = code;
 
-        // Update active state in list
         var items = document.querySelectorAll('.currency-item');
         for (var i = 0; i < items.length; i++) {
             items[i].classList.toggle('active', items[i].getAttribute('data-code') === code);
         }
 
-        // Re-convert prices
         if (allRates) {
             applyConversion(code, allRates);
         }
@@ -384,24 +409,21 @@
     function init() {
         storeOriginals();
 
+        // Build the selector button immediately so it's always visible
+        activeCurrency = getUserPref() || 'GBP';
+        buildSelector();
+
         var cached = getCached();
-        var userPref = getUserPref();
 
         if (cached && cached.rates) {
             allRates = cached.rates;
             allRates['USD'] = 1;
-
-            if (userPref && allRates[userPref]) {
-                activeCurrency = userPref;
-                applyConversion(activeCurrency, allRates);
-                buildSelector();
-            } else {
-                detectGeoAndConvert();
-            }
+            populateList();
+            resolveActiveCurrency();
             return;
         }
 
-        // Fetch rates first, then detect currency
+        // Fetch rates
         fetch('https://open.er-api.com/v6/latest/USD')
             .then(function (r) { return r.json(); })
             .then(function (data) {
@@ -409,19 +431,23 @@
                 allRates = data.rates;
                 allRates['USD'] = 1;
                 setCache(allRates);
-
-                if (userPref && allRates[userPref]) {
-                    activeCurrency = userPref;
-                    applyConversion(activeCurrency, allRates);
-                    buildSelector();
-                } else {
-                    detectGeoAndConvert();
-                }
+                populateList();
+                resolveActiveCurrency();
             })
-            .catch(function () { /* fail silently */ });
+            .catch(function () { /* fail silently - button still visible */ });
     }
 
-    function detectGeoAndConvert() {
+    function resolveActiveCurrency() {
+        var userPref = getUserPref();
+
+        if (userPref && allRates[userPref]) {
+            activeCurrency = userPref;
+            if (btnLabelEl) btnLabelEl.textContent = activeCurrency;
+            applyConversion(activeCurrency, allRates);
+            return;
+        }
+
+        // No saved preference - detect from geolocation
         fetch('https://ipapi.co/json/')
             .then(function (r) { return r.json(); })
             .then(function (geo) {
@@ -429,16 +455,20 @@
                 if (currency && allRates && allRates[currency]) {
                     activeCurrency = currency;
                 } else {
-                    activeCurrency = 'GBP'; // default fallback
+                    activeCurrency = 'GBP';
                 }
+                if (btnLabelEl) btnLabelEl.textContent = activeCurrency;
                 applyConversion(activeCurrency, allRates);
-                buildSelector();
+
+                // Update active state in the list
+                var items = document.querySelectorAll('.currency-item');
+                for (var i = 0; i < items.length; i++) {
+                    items[i].classList.toggle('active', items[i].getAttribute('data-code') === activeCurrency);
+                }
             })
             .catch(function () {
                 activeCurrency = 'GBP';
-                if (allRates) {
-                    buildSelector();
-                }
+                if (btnLabelEl) btnLabelEl.textContent = activeCurrency;
             });
     }
 
