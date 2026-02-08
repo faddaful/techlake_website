@@ -2846,3 +2846,421 @@ textarea:focus-visible {
 ::-webkit-scrollbar-thumb:hover {
     background: var(--accent-purple);
 }
+
+/* ================================
+   LEGAL PAGES (Privacy, Terms)
+   ================================ */
+.legal-page {
+    background: var(--bg-primary);
+    padding: 10rem 0 6rem;
+    min-height: 100vh;
+}
+
+.legal-page .breadcrumb {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+}
+
+.legal-page .breadcrumb a {
+    color: var(--text-muted);
+    transition: var(--transition);
+}
+
+.legal-page .breadcrumb a:hover {
+    color: var(--text-primary);
+}
+
+.legal-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.legal-content h1 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+}
+
+.legal-content .legal-updated {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.legal-content h2 {
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.legal-content h2:first-of-type {
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0;
+}
+
+.legal-content h3 {
+    font-size: 1.125rem;
+    color: var(--text-primary);
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.legal-content p {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 1rem;
+    font-size: 0.9375rem;
+}
+
+.legal-content ul,
+.legal-content ol {
+    color: var(--text-secondary);
+    margin-bottom: 1.25rem;
+    padding-left: 1.5rem;
+    list-style: disc;
+}
+
+.legal-content ol {
+    list-style: decimal;
+}
+
+.legal-content li {
+    margin-bottom: 0.5rem;
+    line-height: 1.7;
+    font-size: 0.9375rem;
+}
+
+.legal-content a {
+    color: var(--accent-blue);
+}
+
+.legal-content a:hover {
+    color: var(--accent-purple);
+}
+
+.legal-content strong {
+    color: var(--text-primary);
+}
+
+.legal-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+}
+
+.legal-content th,
+.legal-content td {
+    padding: 1rem 1.25rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 0.9375rem;
+}
+
+.legal-content th {
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.legal-content td {
+    color: var(--text-secondary);
+}
+
+.legal-contact-box {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-xl);
+    padding: 2rem;
+    margin-top: 2rem;
+}
+
+.legal-contact-box h3 {
+    margin-top: 0;
+}
+
+/* ================================
+   THANK YOU PAGE
+   ================================ */
+.thankyou-page {
+    background: var(--bg-primary);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.thankyou-section {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding: 10rem 0 6rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.thankyou-section::before {
+    content: '';
+    position: absolute;
+    width: 800px;
+    height: 800px;
+    background: conic-gradient(from 0deg,
+        rgba(16, 185, 129, 0.15),
+        rgba(59, 130, 246, 0.15),
+        rgba(139, 92, 246, 0.15),
+        rgba(16, 185, 129, 0.15));
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    filter: blur(100px);
+    animation: rotateGlow 30s linear infinite;
+}
+
+.thankyou-content {
+    max-width: 650px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.thankyou-icon {
+    width: 100px;
+    height: 100px;
+    background: var(--gradient-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 2rem;
+    box-shadow: var(--glow-purple);
+}
+
+.thankyou-icon svg {
+    width: 48px;
+    height: 48px;
+    color: white;
+    stroke: white;
+}
+
+.thankyou-content h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.thankyou-content .thankyou-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    margin-bottom: 3rem;
+    line-height: 1.8;
+}
+
+.thankyou-steps {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-2xl);
+    padding: 2.5rem;
+    text-align: left;
+    margin-bottom: 2rem;
+}
+
+.thankyou-steps h2 {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+    text-align: center;
+}
+
+.thankyou-step {
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.thankyou-step:last-child {
+    border-bottom: none;
+}
+
+.thankyou-step-num {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    background: var(--gradient-primary);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.875rem;
+}
+
+.thankyou-step-text h3 {
+    font-size: 1rem;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+}
+
+.thankyou-step-text p {
+    color: var(--text-secondary);
+    font-size: 0.9375rem;
+    margin: 0;
+    line-height: 1.6;
+}
+
+.thankyou-support {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-xl);
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.thankyou-support p {
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+    font-size: 0.9375rem;
+}
+
+.thankyou-support a {
+    color: var(--accent-blue);
+    font-weight: 600;
+}
+
+.thankyou-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* ================================
+   COOKIE CONSENT BANNER
+   ================================ */
+.cookie-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--bg-card);
+    border-top: 1px solid var(--border-color);
+    padding: 1.5rem 0;
+    z-index: 9999;
+    transform: translateY(100%);
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.4);
+}
+
+.cookie-banner.active {
+    transform: translateY(0);
+}
+
+.cookie-banner .container {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.cookie-banner-text {
+    flex: 1;
+    min-width: 280px;
+}
+
+.cookie-banner-text p {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    margin: 0;
+    line-height: 1.6;
+}
+
+.cookie-banner-text a {
+    color: var(--accent-blue);
+    text-decoration: underline;
+}
+
+.cookie-banner-buttons {
+    display: flex;
+    gap: 0.75rem;
+    flex-shrink: 0;
+}
+
+.cookie-btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-full);
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    border: none;
+    font-family: var(--font-family);
+}
+
+.cookie-btn-accept {
+    background: var(--gradient-primary);
+    color: white;
+}
+
+.cookie-btn-accept:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--glow-purple);
+}
+
+.cookie-btn-reject {
+    background: transparent;
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+}
+
+.cookie-btn-reject:hover {
+    border-color: var(--text-muted);
+    color: var(--text-primary);
+}
+
+@media (max-width: 768px) {
+    .cookie-banner .container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .cookie-banner-buttons {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .legal-content table {
+        display: block;
+        overflow-x: auto;
+    }
+}
+
+/* Footer Legal Links */
+.footer-legal-links {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.footer-legal-links a {
+    color: var(--text-muted);
+    font-size: 0.8125rem;
+    transition: var(--transition);
+}
+
+.footer-legal-links a:hover {
+    color: var(--text-primary);
+}

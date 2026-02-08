@@ -234,7 +234,11 @@
             </div>
 
             <div class="footer-bottom">
-                <p>&copy; 2025 TechLake. All rights reserved.</p>
+                <p>&copy; 2026 TechLake. All rights reserved.</p>
+                <div class="footer-legal-links">
+                    <a href="../privacy-policy.html">Privacy Policy</a>
+                    <a href="../terms-and-conditions.html">Terms & Conditions</a>
+                </div>
             </div>
         </div>
     </footer>
@@ -244,6 +248,56 @@
             document.querySelector('.nav-links').classList.toggle('active');
             this.classList.toggle('active');
         });
+    </script>
+
+    <!-- Cookie Consent Banner -->
+    <div class="cookie-banner" id="cookieBanner">
+        <div class="container">
+            <div class="cookie-banner-text">
+                <p>We use cookies to provide live chat support and improve your experience. Strictly necessary cookies are always active. You can accept or reject optional cookies. See our <a href="../privacy-policy.html">Privacy Policy</a> for details.</p>
+            </div>
+            <div class="cookie-banner-buttons">
+                <button class="cookie-btn cookie-btn-accept" id="cookieAccept">Accept All</button>
+                <button class="cookie-btn cookie-btn-reject" id="cookieReject">Reject Optional</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    (function() {
+        var consent = localStorage.getItem('cookie_consent');
+        if (!consent) {
+            setTimeout(function() {
+                document.getElementById('cookieBanner').classList.add('active');
+            }, 500);
+        } else if (consent === 'accepted') {
+            loadTawkTo();
+        }
+
+        document.getElementById('cookieAccept').addEventListener('click', function() {
+            localStorage.setItem('cookie_consent', 'accepted');
+            document.getElementById('cookieBanner').classList.remove('active');
+            loadTawkTo();
+        });
+
+        document.getElementById('cookieReject').addEventListener('click', function() {
+            localStorage.setItem('cookie_consent', 'rejected');
+            document.getElementById('cookieBanner').classList.remove('active');
+        });
+
+        function loadTawkTo() {
+            var Tawk_API = window.Tawk_API || {};
+            window.Tawk_API = Tawk_API;
+            var Tawk_LoadStart = new Date();
+            var s1 = document.createElement("script");
+            var s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/587cc162e8239e1d977994c5/default';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+        }
+    })();
     </script>
 </body>
 </html>
