@@ -467,9 +467,11 @@
     <!-- Dynamic Currency Conversion -->
     <script src="../js/currency.js"></script>
 
-    <!-- Cookie Consent Banner -->
-    <div class="cookie-banner" id="cookieBanner">
-        <div class="container">
+    <!-- Cookie Consent Overlay -->
+    <div class="cookie-overlay" id="cookieOverlay">
+        <div class="cookie-banner">
+            <div class="cookie-banner-icon">&#x1f36a;</div>
+            <div class="cookie-banner-title">We Value Your Privacy</div>
             <div class="cookie-banner-text">
                 <p>We use cookies to provide live chat support and improve your experience. Strictly necessary cookies are always active. You can accept or reject optional cookies. See our <a href="../privacy-policy.html">Privacy Policy</a> for details.</p>
             </div>
@@ -485,7 +487,7 @@
         var consent = localStorage.getItem('cookie_consent');
         if (!consent) {
             setTimeout(function() {
-                document.getElementById('cookieBanner').classList.add('active');
+                document.getElementById('cookieOverlay').classList.add('active');
             }, 500);
         } else if (consent === 'accepted') {
             loadTawkTo();
@@ -493,13 +495,13 @@
 
         document.getElementById('cookieAccept').addEventListener('click', function() {
             localStorage.setItem('cookie_consent', 'accepted');
-            document.getElementById('cookieBanner').classList.remove('active');
+            document.getElementById('cookieOverlay').classList.remove('active');
             loadTawkTo();
         });
 
         document.getElementById('cookieReject').addEventListener('click', function() {
             localStorage.setItem('cookie_consent', 'rejected');
-            document.getElementById('cookieBanner').classList.remove('active');
+            document.getElementById('cookieOverlay').classList.remove('active');
         });
 
         function loadTawkTo() {
