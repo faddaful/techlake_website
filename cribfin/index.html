@@ -579,7 +579,7 @@
             btn.textContent = 'Sending...';
 
             var data = new FormData(form);
-            data.append('access_key', (typeof CRIBFIN_FORM_KEY !== 'undefined' && CRIBFIN_FORM_KEY) ? CRIBFIN_FORM_KEY : 'eecc6511-dbc1-41ab-bd25-9f496693ec73');
+            data.append('access_key', (typeof CRIBFIN_FORM_KEY !== 'undefined' && CRIBFIN_FORM_KEY) ? CRIBFIN_FORM_KEY : '');
 
             if (!data.get('cf-turnstile-response')) {
                 btn.disabled = false;

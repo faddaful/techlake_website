@@ -351,7 +351,7 @@
             btn.textContent = 'Sending...';
 
             var data = new FormData(form);
-            data.append('access_key', (typeof TECHLAKE_FORM_KEY !== 'undefined' && TECHLAKE_FORM_KEY) ? TECHLAKE_FORM_KEY : '86bd050a-0289-46e6-824b-fbf3e1623ccb');
+            data.append('access_key', (typeof TECHLAKE_FORM_KEY !== 'undefined' && TECHLAKE_FORM_KEY) ? TECHLAKE_FORM_KEY : '');
 
             if (!data.get('cf-turnstile-response')) {
                 btn.disabled = false;
