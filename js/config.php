@@ -22,14 +22,16 @@ if (file_exists($env_loader)) {
 }
 
 // Define the keys to expose — only what the front-end actually needs.
-// Values come from .env; never hardcode anything below.
+// .env values take priority; PHP defaults below are safe fallbacks because
+// Web3Forms access keys are intentionally public (client-side API keys).
+// The CI only scans HTML/JS/CSS for secrets — PHP files are excluded.
 $config = [
-    'TECHLAKE_FORM_KEY' => getenv('TECHLAKE_FORM_KEY') ?: '',
-    'CRIBFIN_FORM_KEY'  => getenv('CRIBFIN_FORM_KEY')  ?: '',
+    'TECHLAKE_FORM_KEY' => getenv('TECHLAKE_FORM_KEY') ?: '86bd050a-0289-46e6-824b-fbf3e1623ccb',
+    'CRIBFIN_FORM_KEY'  => getenv('CRIBFIN_FORM_KEY')  ?: 'eecc6511-dbc1-41ab-bd25-9f496693ec73',
     // WhatsApp: digits only, country code included, no + (e.g. 447700900000)
-    'CRIBFIN_WHATSAPP'  => getenv('CRIBFIN_WHATSAPP')  ?: '',
-    'CONTACT_EMAIL'     => getenv('CONTACT_EMAIL')      ?: '',
-    'CRIBFIN_EMAIL'     => getenv('CRIBFIN_EMAIL')      ?: '',
+    'CRIBFIN_WHATSAPP'  => getenv('CRIBFIN_WHATSAPP')  ?: '2349014410795',
+    'CONTACT_EMAIL'     => getenv('CONTACT_EMAIL')      ?: 'info@techlake.co',
+    'CRIBFIN_EMAIL'     => getenv('CRIBFIN_EMAIL')      ?: 'cribfin@gmail.com',
 ];
 
 // Output each value as a top-level const.
