@@ -11,7 +11,7 @@ RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
     Header always set Referrer-Policy "strict-origin-when-cross-origin"
     Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
     Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
-    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.tawk.to https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://*.tawk.to; font-src 'self' https://fonts.gstatic.com https://*.tawk.to; img-src 'self' data: https://*.tawk.to https://www.google-analytics.com https://www.googletagmanager.com; connect-src 'self' https://*.tawk.to wss://*.tawk.to https://api.web3forms.com https://www.google-analytics.com; frame-src https://*.tawk.to; child-src https://*.tawk.to;"
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.tawk.to https://www.googletagmanager.com https://www.google-analytics.com https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://*.tawk.to; font-src 'self' https://fonts.gstatic.com https://*.tawk.to; img-src 'self' data: https://*.tawk.to https://www.google-analytics.com https://www.googletagmanager.com; connect-src 'self' https://*.tawk.to wss://*.tawk.to https://api.web3forms.com https://www.google-analytics.com https://challenges.cloudflare.com; frame-src https://*.tawk.to https://challenges.cloudflare.com; child-src https://*.tawk.to https://challenges.cloudflare.com;"
 </IfModule>
 
 # Disable directory listing

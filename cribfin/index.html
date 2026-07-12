@@ -34,6 +34,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="../js/config.php"></script>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 <body>
 
@@ -174,7 +175,7 @@
             <!-- TODO: Replace placeholder with embedded report pages (screenshots or PDF embed) when ready -->
             <div class="cf-report-placeholder">
                 <div class="cf-report-placeholder-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
                         <polyline points="14 2 14 8 20 8"/>
                         <line x1="16" y1="13" x2="8" y2="13"/>
@@ -266,7 +267,7 @@
                     <button class="cf-faq-btn" aria-expanded="false">
                         Which cities do you cover?
                         <span class="cf-faq-icon" aria-hidden="true">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
                         </span>
                     </button>
                     <div class="cf-faq-answer">
@@ -280,7 +281,7 @@
                     <button class="cf-faq-btn" aria-expanded="false">
                         How fast will I get my report?
                         <span class="cf-faq-icon" aria-hidden="true">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
                         </span>
                     </button>
                     <div class="cf-faq-answer">
@@ -294,7 +295,7 @@
                     <button class="cf-faq-btn" aria-expanded="false">
                         How does rent collection work?
                         <span class="cf-faq-icon" aria-hidden="true">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
                         </span>
                     </button>
                     <div class="cf-faq-answer">
@@ -308,7 +309,7 @@
                     <button class="cf-faq-btn" aria-expanded="false">
                         What if the agent finds a problem?
                         <span class="cf-faq-icon" aria-hidden="true">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
                         </span>
                     </button>
                     <div class="cf-faq-answer">
@@ -322,7 +323,7 @@
                     <button class="cf-faq-btn" aria-expanded="false">
                         Can I speak to someone first?
                         <span class="cf-faq-icon" aria-hidden="true">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
                         </span>
                     </button>
                     <div class="cf-faq-answer">
@@ -354,15 +355,15 @@
                     <p>Fill in the form and our operations lead will confirm availability and send you a payment link within one working day. No payment is taken through this form.</p>
                     <div class="cf-booking-details">
                         <div class="cf-booking-detail">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                             Response within one working day
                         </div>
                         <div class="cf-booking-detail">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                             Payment via secure link (Paystack or Stripe)
                         </div>
                         <div class="cf-booking-detail">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                             Report delivered within 72 hours of visit
                         </div>
                     </div>
@@ -416,6 +417,7 @@
                             <label for="cf-notes">Anything the agent should know</label>
                             <textarea id="cf-notes" name="agent_notes" placeholder="Access notes, specific concerns, parking info, etc."></textarea>
                         </div>
+                        <div class="cf-turnstile" data-sitekey="0x4AAAAAAD0ibo2vWj5a3j8h" style="margin-bottom:1rem"></div>
                         <button type="submit" class="cf-btn cf-btn-primary cf-btn-block" id="cfFormBtn">Submit enquiry</button>
                         <p style="font-size:0.8rem;color:#5A6B62;margin-top:0.75rem;text-align:center">No payment taken here. We will send a secure payment link after confirming availability.</p>
                     </form>
@@ -444,7 +446,7 @@
                     <div class="cf-footer-social">
                         <!-- Instagram -->
                         <a href="#" aria-label="Instagram" target="_blank" rel="noopener">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
                         </a>
                         <!-- X / Twitter -->
                         <a href="#" aria-label="X" target="_blank" rel="noopener">
@@ -465,7 +467,7 @@
 
     <!-- WhatsApp Floating Button -->
     <a href="#" class="cf-whatsapp-float js-wa-link" aria-label="Chat on WhatsApp" target="_blank" rel="noopener">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.553 4.118 1.524 5.851L0 24l6.302-1.496A11.96 11.96 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.795 9.795 0 0 1-4.986-1.364l-.356-.213-3.742.889.922-3.641-.234-.374A9.793 9.793 0 0 1 2.182 12C2.182 6.565 6.565 2.182 12 2.182S21.818 6.565 21.818 12 17.435 21.818 12 21.818z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.553 4.118 1.524 5.851L0 24l6.302-1.496A11.96 11.96 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.795 9.795 0 0 1-4.986-1.364l-.356-.213-3.742.889.922-3.641-.234-.374A9.793 9.793 0 0 1 2.182 12C2.182 6.565 6.565 2.182 12 2.182S21.818 6.565 21.818 12 17.435 21.818 12 21.818z"/></svg>
     </a>
 
     <!-- Cookie Consent -->
@@ -577,7 +579,14 @@
             btn.textContent = 'Sending...';
 
             var data = new FormData(form);
-            data.append('access_key', typeof CRIBFIN_FORM_KEY !== 'undefined' ? CRIBFIN_FORM_KEY : '');
+            data.append('access_key', (typeof CRIBFIN_FORM_KEY !== 'undefined' && CRIBFIN_FORM_KEY) ? CRIBFIN_FORM_KEY : 'eecc6511-dbc1-41ab-bd25-9f496693ec73');
+
+            if (!data.get('cf-turnstile-response')) {
+                btn.disabled = false;
+                btn.textContent = 'Submit enquiry';
+                alert('Security check not completed. Please wait a moment and try again.');
+                return;
+            }
 
             try {
                 var res  = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: data });
@@ -606,8 +615,8 @@
     <script>
     // Wire WhatsApp links and email links from config (set by js/config.php)
     (function() {
-        var wa    = (typeof CRIBFIN_WHATSAPP !== 'undefined' && CRIBFIN_WHATSAPP) ? CRIBFIN_WHATSAPP : '';
-        var email = (typeof CRIBFIN_EMAIL    !== 'undefined' && CRIBFIN_EMAIL)    ? CRIBFIN_EMAIL    : '';
+        var wa    = (typeof CRIBFIN_WHATSAPP !== 'undefined' && CRIBFIN_WHATSAPP) ? CRIBFIN_WHATSAPP : '2349014410795';
+        var email = (typeof CRIBFIN_EMAIL    !== 'undefined' && CRIBFIN_EMAIL)    ? CRIBFIN_EMAIL    : 'cribfin@gmail.com';
 
         if (wa) {
             // Strip any non-digit characters in case the .env value has spaces or +

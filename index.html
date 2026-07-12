@@ -45,6 +45,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="js/config.php"></script>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 <body>
 
@@ -91,7 +92,7 @@
 
                 <div class="service-card">
                     <div class="service-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/>
                             <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
                         </svg>
@@ -102,7 +103,7 @@
 
                 <div class="service-card">
                     <div class="service-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/>
                             <path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/>
                         </svg>
@@ -113,7 +114,7 @@
 
                 <div class="service-card">
                     <div class="service-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
                         </svg>
                     </div>
@@ -123,7 +124,7 @@
 
                 <div class="service-card">
                     <div class="service-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
                             <rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/>
                         </svg>
@@ -187,7 +188,7 @@
                     <p class="section-subtitle">Tell us what you are building. We will be in touch within one working day.</p>
                     <div class="contact-detail">
                         <div class="contact-detail-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
                         </div>
                         <div>
                             <h4>Email</h4>
@@ -196,7 +197,7 @@
                     </div>
                     <div class="contact-detail">
                         <div class="contact-detail-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
                         </div>
                         <div>
                             <h4>Location</h4>
@@ -231,6 +232,7 @@
                             <textarea id="contact-message" name="message" required placeholder="Tell us about your idea or where you are stuck..."></textarea>
                             <span class="form-error" id="message-error" role="alert">Please tell us what you are building.</span>
                         </div>
+                        <div class="cf-turnstile" data-sitekey="0x4AAAAAAD0ibo2vWj5a3j8h" style="margin-bottom:1rem"></div>
                         <button type="submit" class="btn btn-primary btn-block" id="mainFormBtn">Send message</button>
                     </form>
                 </div>
@@ -349,7 +351,14 @@
             btn.textContent = 'Sending...';
 
             var data = new FormData(form);
-            data.append('access_key', typeof TECHLAKE_FORM_KEY !== 'undefined' ? TECHLAKE_FORM_KEY : '');
+            data.append('access_key', (typeof TECHLAKE_FORM_KEY !== 'undefined' && TECHLAKE_FORM_KEY) ? TECHLAKE_FORM_KEY : '86bd050a-0289-46e6-824b-fbf3e1623ccb');
+
+            if (!data.get('cf-turnstile-response')) {
+                btn.disabled = false;
+                btn.textContent = 'Send message';
+                alert('Security check not completed. Please wait a moment and try again.');
+                return;
+            }
 
             try {
                 var res  = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: data });
