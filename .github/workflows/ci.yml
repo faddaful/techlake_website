@@ -1,0 +1,206 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  # ─────────────────────────────────────────────
+  # JOB 1: Lint, validate, security scan
+  # ─────────────────────────────────────────────
+  lint:
+    name: Lint and validate
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # PHP syntax check on every tracked .php file
+      - name: PHP syntax check
+        run: |
+          echo "==> PHP syntax check"
+          find . \
+            -name "*.php" \
+            -not -path "./.git/*" \
+            | sort \
+            | while IFS= read -r file; do
+              result=$(php -l "$file" 2>&1)
+              if [ $? -ne 0 ]; then
+                echo "FAIL: $file"
+                echo "$result"
+                exit 1
+              fi
+              echo "OK: $file"
+            done
+
+      # Verify files that must always exist
+      - name: Required files present
+        run: |
+          echo "==> Required file check"
+          missing=0
+          required=(
+            "index.html"
+            "css/style.css"
+            "js/config.php"
+            "cribfin/index.html"
+            "cribfin/style.css"
+            ".env.example"
+            "env-loader.php"
+            "form-handler.php"
+          )
+          for f in "${required[@]}"; do
+            if [ ! -f "$f" ]; then
+              echo "MISSING: $f"
+              missing=1
+            else
+              echo "OK: $f"
+            fi
+          done
+          [ "$missing" -eq 0 ] || exit 1
+
+      # .env must never be committed
+      - name: .env not tracked by git
+        run: |
+          echo "==> .env git-tracking check"
+          if git ls-files --error-unmatch .env 2>/dev/null; then
+            echo "ERROR: .env is tracked by git."
+            echo "Fix: git rm --cached .env && echo '.env' >> .gitignore"
+            exit 1
+          fi
+          echo "OK: .env is not tracked."
+
+      # Static config.js must not be committed (secrets belong in .env → config.php)
+      - name: js/config.js not tracked by git
+        run: |
+          echo "==> js/config.js git-tracking check"
+          if git ls-files --error-unmatch js/config.js 2>/dev/null; then
+            echo "ERROR: js/config.js is tracked by git."
+            echo "Secrets must come from js/config.php which reads .env server-side."
+            echo "Fix: git rm --cached js/config.js"
+            exit 1
+          fi
+          echo "OK: js/config.js is not tracked."
+
+      # Scan HTML/JS for Web3Forms UUID keys (xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)
+      - name: No hardcoded Web3Forms keys in committed files
+        run: |
+          echo "==> Scanning for hardcoded API keys (UUID format)"
+          pattern='[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}'
+          matches=$(grep -rEn "$pattern" \
+            --include="*.html" \
+            --include="*.js" \
+            --include="*.css" \
+            . 2>/dev/null || true)
+          if [ -n "$matches" ]; then
+            echo "ERROR: Hardcoded API key (UUID) found in committed files:"
+            echo "$matches"
+            echo "Move these to .env and serve via js/config.php"
+            exit 1
+          fi
+          echo "OK: No hardcoded UUIDs in HTML/JS/CSS."
+
+      # Placeholder phone numbers must be replaced before going live
+      - name: No placeholder phone numbers in HTML
+        run: |
+          echo "==> Checking for placeholder phone numbers"
+          if grep -rn "447000000000" --include="*.html" . 2>/dev/null; then
+            echo "ERROR: Placeholder WhatsApp number still present in HTML."
+            echo "Set CRIBFIN_WHATSAPP in .env — the page reads it via js/config.php."
+            exit 1
+          fi
+          echo "OK: No placeholder numbers."
+
+      # HTML lint via htmlhint
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install htmlhint
+        run: npm install -g htmlhint
+
+      - name: HTML lint
+        run: |
+          echo "==> HTML lint"
+          htmlhint \
+            index.html \
+            cribfin/index.html \
+            privacy-policy.html \
+            terms-and-conditions.html \
+            thank-you.html
+
+  # ─────────────────────────────────────────────
+  # JOB 2: Post-deploy smoke test (main only)
+  # Fires after lint passes. The deploy.php webhook
+  # is triggered by GitHub automatically; we wait
+  # briefly then verify the live site is healthy.
+  # ─────────────────────────────────────────────
+  smoke-test:
+    name: Live site smoke test
+    runs-on: ubuntu-latest
+    needs: lint
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+
+    steps:
+      - name: Wait for webhook deploy
+        run: |
+          echo "Waiting 35 seconds for deploy.php to complete git pull..."
+          sleep 35
+
+      - name: Check live URLs return HTTP 200
+        run: |
+          failed=0
+          declare -a urls=(
+            "https://techlake.co/"
+            "https://techlake.co/cribfin/"
+            "https://techlake.co/privacy-policy.html"
+            "https://techlake.co/js/config.php"
+          )
+          for url in "${urls[@]}"; do
+            echo -n "Checking $url ... "
+            ok=0
+            for attempt in 1 2 3; do
+              code=$(curl -s -o /dev/null -w "%{http_code}" --max-time 20 "$url")
+              if [ "$code" = "200" ]; then
+                echo "HTTP 200 OK"
+                ok=1
+                break
+              fi
+              echo -n "HTTP $code (attempt $attempt/3, retrying) "
+              sleep 10
+            done
+            if [ "$ok" -eq 0 ]; then
+              echo "FAILED"
+              failed=1
+            fi
+          done
+          [ "$failed" -eq 0 ] || exit 1
+
+      - name: Verify config.php serves JavaScript content-type
+        run: |
+          echo "==> Checking config.php Content-Type"
+          ct=$(curl -s -I --max-time 15 https://techlake.co/js/config.php \
+            | grep -i "^content-type:" | head -1)
+          echo "Response Content-Type: $ct"
+          if ! echo "$ct" | grep -qi "javascript"; then
+            echo "ERROR: config.php is not returning a JavaScript Content-Type."
+            exit 1
+          fi
+          echo "OK: config.php is serving JavaScript."
+
+      - name: Verify main page references config.php not config.js
+        run: |
+          echo "==> Checking script tag on main page"
+          body=$(curl -s --max-time 20 https://techlake.co/)
+          if echo "$body" | grep -q "config.js"; then
+            echo "ERROR: Main page still references config.js (should be config.php)."
+            exit 1
+          fi
+          if ! echo "$body" | grep -q "config.php"; then
+            echo "WARNING: config.php reference not found in main page HTML."
+          else
+            echo "OK: Main page references config.php."
+          fi

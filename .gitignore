@@ -7,6 +7,11 @@ deploy.log
 .env
 .env.local
 .htaccess
+.env.example
+
+# Static config — secrets must come from js/config.php (reads .env server-side)
+# Committing this file would expose API keys. It is safe to delete any local copy.
+js/config.js
 
 # IDE/Editor
 .idea/
