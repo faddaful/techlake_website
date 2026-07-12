@@ -359,6 +359,7 @@
                 alert('Security check not completed. Please wait a moment and try again.');
                 return;
             }
+            data.delete('cf-turnstile-response');
 
             try {
                 var res  = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: data });
